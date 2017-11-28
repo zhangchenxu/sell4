@@ -36,7 +36,7 @@
 				</div>
 				<div class="seller-name">{{seller.name}}</div>
 				<div class="stars">
-					<star :size="48" :score="seller.score"></star>
+					<star :size="32" :score="seller.score"></star>
 				</div>
 				<div class="supports-wrapper">
 					<div class="title-wrapper">
@@ -220,6 +220,7 @@ export default {
 			height 100%
 			top 0
 			left: 0
+			z-index 10
 			padding 64px 36px 32px 36px
 			background-color: rgba(7, 17, 27, 0.8)
 			.detail

@@ -33,7 +33,6 @@
         while (result.length < starSum) {
           result.push(CLS_OFF);
         }
-        console.log(result);
         return result;
       }
     }

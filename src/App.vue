@@ -18,6 +18,7 @@
 
 <script type="text/ecmascript-6">
  import vHeader from '@/components/header/header';
+ import goods from '@/components/goods/goods';
 
  const NO_ERROR = 0;
  export default {
@@ -36,7 +37,8 @@
      });
    },
    components: {
-     'v-header': vHeader
+     'v-header': vHeader,
+     goods
    }
  };
 </script>
@@ -48,6 +50,7 @@
 		position relative
 		width 100%
 		height 100%
+		z-index 1
 		.tab
 			display flex
 			width 100%
