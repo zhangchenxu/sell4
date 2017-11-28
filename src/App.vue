@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <v-header :seller="seller" class="header">{{seller.name}}</v-header>
-	  <div class="tab">
+	  <div class="tab border-1px">
 		  <div class="tab-item">
 			  <router-link to="/goods">商品</router-link>
 		  </div>
@@ -43,8 +43,23 @@
 
 <style lang="stylus" rel="stylesheet/stylus">
 	@import "common/style/base.styl"
+	@import "common/style/mixin.styl"
 	#app
 		position relative
 		width 100%
 		height 100%
+		.tab
+			display flex
+			width 100%
+			height 40px
+			border-1px(rgba(7, 17, 27, 0.1))
+			.tab-item
+				height 39px
+				line-height: 39px
+				flex 1
+				text-align center
+				font-size 14px
+				color rgb(77, 85, 93)
+				.router-link-active
+					color rgb(240, 20, 20)
 </style>

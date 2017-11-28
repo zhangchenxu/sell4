@@ -35,7 +35,9 @@
 					<i class="icon-close" @click="hideDetail"></i>
 				</div>
 				<div class="seller-name">{{seller.name}}</div>
-				<div class="stars">星星</div>
+				<div class="stars">
+					<star :size="48" :score="seller.score"></star>
+				</div>
 				<div class="supports-wrapper">
 					<div class="title-wrapper">
 						<div class="line border-1px">
@@ -46,7 +48,7 @@
 						<div class="line">
 						</div>
 					</div>
-					<div class="supports" >
+					<div class="supports">
 						<div class="support-item" v-for="support in seller.supports">
 							<span class="icon" :class="classMap[support.type]"></span>
 							<span class="support-desc">{{support.description}}</span>
@@ -72,7 +74,12 @@
 	</div>
 </template>
 <script type="text/javascript">
+import star from '@/components/star/star';
+
 export default {
+  components: {
+    star
+  },
   props: {
     seller: {
       type: Object,
@@ -213,8 +220,8 @@ export default {
 			height 100%
 			top 0
 			left: 0
-			padding  64px 36px 32px 36px
-			background-color: rgba(7, 17, 27 ,0.8)
+			padding 64px 36px 32px 36px
+			background-color: rgba(7, 17, 27, 0.8)
 			.detail
 				color: rgb(255, 255, 255)
 				.close-wrapper
@@ -237,7 +244,7 @@ export default {
 					text-align center
 					margin-bottom 28px
 				.supports-wrapper, .buttein-wrapper
-					margin-bottom 16px
+					margin-bottom 28px
 					.title-wrapper
 						width 100%
 						height 14px
@@ -281,8 +288,7 @@ export default {
 							.support-desc
 								font-size 12px
 								font-weight 200
-	
-								
+					
 					.bulletin
 						padding 0 12px
 						line-height 24px
