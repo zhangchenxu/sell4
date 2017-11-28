@@ -37,12 +37,34 @@
 				<div class="seller-name">{{seller.name}}</div>
 				<div class="stars">星星</div>
 				<div class="supports-wrapper">
-					<div class="title">优惠信息</div>
-					<div class="supports" v-for="support in seller.supports">
-						<div class="support-item">
+					<div class="title-wrapper">
+						<div class="line border-1px">
+						</div>
+						<div class="title">
+							优惠信息
+						</div>
+						<div class="line">
+						</div>
+					</div>
+					<div class="supports" >
+						<div class="support-item" v-for="support in seller.supports">
 							<span class="icon" :class="classMap[support.type]"></span>
 							<span class="support-desc">{{support.description}}</span>
 						</div>
+					</div>
+				</div>
+				<div class="buttein-wrapper">
+					<div class="title-wrapper">
+						<div class="line border-1px">
+						</div>
+						<div class="title">
+							商家公告
+						</div>
+						<div class="line">
+						</div>
+					</div>
+					<div class="bulletin">
+						{{seller.bulletin}}
 					</div>
 				</div>
 		</div>
@@ -206,7 +228,7 @@ export default {
 					.icon-close
 						font-size 32px
 				.seller-name
-					margin-bottom 16px
+					margin-bottom 28px
 					line-height 16px
 					font-size 16px
 					font-weight 700
@@ -214,10 +236,56 @@ export default {
 				.stars
 					text-align center
 					margin-bottom 28px
-				.supports-wrapper
-					margin-bottom 24px
-					.title
+				.supports-wrapper, .buttein-wrapper
+					margin-bottom 16px
+					.title-wrapper
+						width 100%
+						height 14px
 						display flex
+						margin-bottom 24px
 						.line
+							height 14px
+							flex 1
+							margin-top -6px
+							border-1px(#61676d)
+						.title
+							flex 0 0 79px
+							width 79px
+							font-size 14px
+							font-weight 700
+							line-height 14px
+							text-align center
+					.supports
+						.support-item
+							margin 0 0 12px 12px
+							height 16px
+							line-height 16px
+							.icon
+								display inline-block
+								width 16px
+								height 16px
+								margin-right 6px
+								background-size 16px 16px
+								background-repeat: no-repeat
+								vertical-align top
+								&.discount
+									bg-img('./images/discount_1')
+								&.decrease
+									bg-img('./images/decrease_1')
+								&.special
+									bg-img('./images/special_1')
+								&.invoice
+									bg-img('./images/invoice_1')
+								&.guarantee
+									bg-img('./images/guarantee_1')
+							.support-desc
+								font-size 12px
+								font-weight 200
 	
+								
+					.bulletin
+						padding 0 12px
+						line-height 24px
+						font-size 12px
+						font-weight 200
 </style>
