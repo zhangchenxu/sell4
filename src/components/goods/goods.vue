@@ -9,7 +9,7 @@
 		</div>
 		</div>
 	</div>
-	<div class="foods-wrapper"  ref="foodsWrapper">
+	<div class="foods-wrapper" ref="foodsWrapper">
 		<ul class="scroll-container">
 			<li class="menu-item" v-for="menuItem in goods">
 				<div class="title">{{menuItem.name}}</div>
@@ -35,13 +35,21 @@
 			</li>
 		</ul>
 	</div>
+	<div class="shopcart" >
+			<shopcart :minPrice="seller.minPrice" :deliveryPrice="seller.deliveryPrice" :selectedFoods="selectedFoods"v></shopcart>
+	</div>
+	
 </div>
 </template>
 <script type="text/javascript">
 
 import BetterScroll from 'better-scroll';
+import shopcart from '@/components/shopcart/shopcart';
 
 export default {
+  components: {
+    shopcart
+  },
   props: {
     seller: {
       type: Object
@@ -66,13 +74,27 @@ export default {
   },
   methods: {
     _initScroll () {
-      console.log(this.$refs);
       this.menuScroll = new BetterScroll(this.$refs.menuWrapper, {
         click: true
       });
       this.foodsScroll = new BetterScroll(this.$refs.foodsWrapper, {
         click: true
       });
+    }
+  },
+  computed: {
+    sl () {
+      console.log(this.goods);
+    },
+    selectedFoods () {
+      let foods = [];
+      for (let key in this.goods) {
+        let good = this.goods[key];
+        good.foods.forEach(function (food) {
+          food.count && foods.push(food);
+        });
+      }
+      return foods;
     }
   }
 };
@@ -121,12 +143,12 @@ export default {
 							bg-img('./images/invoice_1')
 						&.guarantee
 							bg-img('./images/guarantee_1')
-	.foods-wrapper
-		flex 1
-		position: relative;
-		overflow hidden
-		.scroll-container
-			width 100%
+		.foods-wrapper
+			flex 1
+			position: relative;
+			overflow hidden
+			.scroll-container
+				width 100%
 			.menu-item
 				.title
 					padding-left 14px
@@ -192,4 +214,10 @@ export default {
 									text-decoration line-through
 									.num
 										font-weight normal
+		.shopcart
+			position fixed
+			z-index 10
+			bottom 0
+			left 0
+			width 100%
 </style>
