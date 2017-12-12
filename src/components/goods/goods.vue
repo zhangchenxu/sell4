@@ -15,6 +15,9 @@
 				<div class="title">{{menuItem.name}}</div>
 				<ul class="foods-wrapper">
 					<li v-for="food in menuItem.foods" class="food-item">
+						<div class="cart-controller">
+							<cartcontroller :food="food"></cartcontroller>
+						</div>
 						<div class="img-wrapper">
 							<img :src="food.icon" :alt="food.name" class="food-icon" width="57" height="57">
 						</div>
@@ -35,8 +38,8 @@
 			</li>
 		</ul>
 	</div>
-	<div class="shopcart" >
-			<shopcart :minPrice="seller.minPrice" :deliveryPrice="seller.deliveryPrice" :selectedFoods="selectedFoods"v></shopcart>
+	<div class="shopcart">
+			<shopcart :minPrice="seller.minPrice" :deliveryPrice="seller.deliveryPrice" :selectedFoods="selectedFoods"></shopcart>
 	</div>
 	
 </div>
@@ -45,10 +48,12 @@
 
 import BetterScroll from 'better-scroll';
 import shopcart from '@/components/shopcart/shopcart';
+import cartcontroller from '@/components/cartController/cartController';
 
 export default {
   components: {
-    shopcart
+    shopcart,
+    cartcontroller
   },
   props: {
     seller: {
@@ -160,6 +165,7 @@ export default {
 					border-left: 2px solid #d9dde1
 				.foods-wrapper
 					.food-item
+						position relative
 						padding 18px
 						display flex
 						border-1px(rgba(7, 17, 27, 0.1))
@@ -173,6 +179,10 @@ export default {
 							vertical-align top
 							.img
 								display block
+						.cart-controller
+							position absolute
+							bottom 18px
+							right 18px
 						.food-detail
 							flex 1
 							margin-left 10px

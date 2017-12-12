@@ -31,7 +31,7 @@
         type: Number
       },
       selectedFoods: {
-        type: Object
+        type: Array
       }
     },
     data () {
